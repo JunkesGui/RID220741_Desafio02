@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+*{
+    font-family: Rubik;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#headerText{
+    color: #11175E;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 10% 5%
+}
+
+#createTaskForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0px 5%;
+    margin-bottom: 10%;
+}
+
+input{
+    color: #B1BACB;
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 2rem;
+    border: 1px solid #EEEEEE;
+    padding-left: 0.8rem;
+    border-radius: 0.4rem;
+    outline: none;
+    &:focus{
+        border: 1px solid #383838;
+    }
+}
+
+#addTaskButton{
+    height: 2rem;
+    width: 100%;
+    background-color: #2D70FD;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+}
