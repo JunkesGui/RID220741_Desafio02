@@ -11,12 +11,36 @@ const getTaskInfo = (task) =>{
     return {description, id, tag, creationDate}
 }
 
+const getConcludeButton = () =>{
+    const concludeButton = document.createElement('input');
+    concludeButton.type = 'button';
+    concludeButton.value = 'Concluir';
+    concludeButton.className = "concludeButton"
+    return concludeButton;
+}
+
 const createTaskItem = (task) =>{
     const list = document.getElementById('taskList');
-    const newTask = document.createElement('li');
+    const newTask = document.createElement('div');
+    const newTaskDesc = document.createElement('li');
+    const newTaskTag = document.createElement('li');
+    const newTaskDate = document.createElement('li');
 
     newTask.id = task.id
-    newTask.textContent = task.description
+
+    newTaskDesc.textContent = task.description
+    newTask.appendChild(newTaskDesc)
+
+    newTaskTag.textContent = task.tag
+    newTaskTag.className = 'taskTag'
+    newTask.appendChild(newTaskTag)
+
+    newTaskDate.textContent = task.creationDate
+    newTaskDate.className = 'taskDate'
+    newTask.appendChild(newTaskDate)
+
+    newTask.appendChild(getConcludeButton())
+
     list.appendChild(newTask)
 
     return newTask
@@ -24,15 +48,13 @@ const createTaskItem = (task) =>{
 
 const createTask = () =>{
     tasks.forEach((task)=>{
-        console.log(task)
+        console.log(task);
         const newTaskData = getTaskInfo(task);
         const {description, id, tag, creationDate} = newTaskData;
         createTaskItem(newTaskData);
-        console.log(createTaskItem(newTaskData))
     })
     
 }
-
 
 window.onload = function (){
     const form = document.getElementById("createTaskForm");
@@ -42,3 +64,5 @@ window.onload = function (){
         
     })
 }
+
+//TODO FUNC ADICIONAR TAREFAS PELO SUBMIT; REMOVER LOGICA ARRAY HARDCODED E TROCAR POR LOGICA DE LOCAL STORAGE
