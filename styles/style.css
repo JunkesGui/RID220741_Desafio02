@@ -2,7 +2,7 @@
 
 *{
     font-family: Rubik;
-    font-size: 20px;
+    font-size: 1rem;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -26,9 +26,8 @@
 
 input{
     color: #B1BACB;
-    font-size: 0.8rem;
     font-weight: 400;
-    height: 2rem;
+    height: 2.8rem;
     border: 1px solid #EEEEEE;
     padding-left: 0.8rem;
     border-radius: 0.4rem;
@@ -39,11 +38,29 @@ input{
 }
 
 #addTaskButton{
-    height: 2rem;
+    height: 2.8rem;
     width: 100%;
     background-color: #2D70FD;
     color: #fff;
     outline: none;
     border: none;
     border-radius: 0.4rem;
+    &:active{
+        background-color: #1e459ba9;
+    }
+}
+
+#taskListDiv{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    & > ul > li{
+        border: 1px solid #EEEEEE;
+        border-radius: 0.4rem;
+        padding: 5%;
+        list-style-type: none;
+        margin-bottom: 1rem;
+    }
 }
