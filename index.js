@@ -1,14 +1,18 @@
-let tasks = [
-    {id: 1, description: "Teste1", tag: "TestTag", creationDate: "hoje?"},
-    {id: 2, description: "Teste2", tag: "TestTag", creationDate: "hoje?"}
-]
+const getTasksInStorage = () =>{
+    const localTasks = JSON.parse(window.localStorage.getItem('tasks'));
+    return localTasks ? localTasks : [];
+}
 
-const getTaskInfo = (task) =>{
-    const description = task.description;
-    const id = task.id;
-    const tag = task.tag;
-    const creationDate = task.creationDate;
-    return {description, id, tag, creationDate}
+const setTasksInStorage = (tasks) =>{
+    window.localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+const getTaskInfo = (event) =>{
+    const description = event.target.elements.description.value;
+    //const id = task.id;
+    const tag = event.target.elements.tag.value;
+    //const creationDate = task.creationDate;
+    return {description, tag}
 }
 
 const getConcludeButton = () =>{
@@ -25,8 +29,6 @@ const createTaskItem = (task) =>{
     const newTaskDesc = document.createElement('li');
     const newTaskTag = document.createElement('li');
     const newTaskDate = document.createElement('li');
-
-    newTask.id = task.id
 
     newTaskDesc.textContent = task.description
     newTask.appendChild(newTaskDesc)
@@ -46,23 +48,25 @@ const createTaskItem = (task) =>{
     return newTask
 }
 
-const createTask = () =>{
-    tasks.forEach((task)=>{
-        console.log(task);
-        const newTaskData = getTaskInfo(task);
-        const {description, id, tag, creationDate} = newTaskData;
-        createTaskItem(newTaskData);
-    })
-    
+const createTask = (event) =>{
+    event.preventDefault();
+    const newTaskData = getTaskInfo(event);
+    createTaskItem(newTaskData);
+    console.log(newTaskData)
+
+    const tasks = getTasksInStorage();
+    const updatedTasks = [...tasks, {description: newTaskData.description, tag: newTaskData.tag}]
+    setTasksInStorage(updatedTasks);
 }
 
 window.onload = function (){
     const form = document.getElementById("createTaskForm");
-    //form.addEventListener('submit', createTask);
-    tasks.forEach((task)=>{
+    form.addEventListener('submit', createTask);
+
+    const tasks = getTasksInStorage();
+    tasks.forEach(task => {
         createTaskItem(task);
-        
-    })
+    });
 }
 
-//TODO FUNC ADICIONAR TAREFAS PELO SUBMIT; REMOVER LOGICA ARRAY HARDCODED E TROCAR POR LOGICA DE LOCAL STORAGE
+//TODO FUNC getDate para adicionar a data de criação da task; FUNC getId para criar novos IDs para cada nova task 
