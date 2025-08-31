@@ -32,12 +32,54 @@ const getTaskInfo = (event) =>{
     return {id, description, tag, creationDate}
 }
 
-const getConcludeButton = () =>{
+const getConcludeButton = (taskId) =>{
     const concludeButton = document.createElement('input');
     concludeButton.type = 'button';
     concludeButton.value = 'Concluir';
     concludeButton.className = "concludeButton"
+    concludeButton.addEventListener("click", concludeTask)
+    concludeButton.id = `concludeButton-${taskId}`;
     return concludeButton;
+}
+
+const getDoneIcon = () =>{
+    const doneIcon = document.createElement('img')
+    doneIcon.src = "./styles/doneIcon.svg"
+    doneIcon.id = "doneIcon"
+    return doneIcon
+}
+
+const visualConcludeTask = (id)=>{
+    document.getElementById(`taskDescription${id}`)
+            .setAttribute('id', 'DONE')
+    
+    const taskDiv = document.getElementById(`taskDivId${id}`)
+    taskDiv.removeChild(document.getElementById(`concludeButton-${id}`))
+    
+    taskDiv.append(getDoneIcon())
+}
+
+const removeDoneTask = (taskId)=>{
+    const tasks = getTasksInStorage();
+    const updatedTasks = tasks.filter(({id}) => parseInt(id) !== parseInt(taskId))
+    setTasksInStorage(updatedTasks)
+}
+
+const concludeTask = (event) =>{
+    const tasks = getTasksInStorage();
+    const id = event.target.id.split('-')[1];
+    
+    const updatedTasks = tasks.map((task) =>{
+        if(parseInt(task.id) === parseInt(id)){
+            visualConcludeTask(id);        
+            return {... task, done: true}
+        }else{
+            return task;
+        }
+    })
+    setTasksInStorage(updatedTasks);
+    removeDoneTask(id)
+    
 }
 
 const createTaskItem = (task) =>{
@@ -47,7 +89,11 @@ const createTaskItem = (task) =>{
     const newTaskTag = document.createElement('li');
     const newTaskDate = document.createElement('li');
 
+    const newTaskId = task.id;
+    newTask.id = `taskDivId${newTaskId}`;
+
     newTaskDesc.textContent = task.description
+    newTaskDesc.id = `taskDescription${newTaskId}`
     newTask.appendChild(newTaskDesc)
 
     newTaskTag.textContent = task.tag
@@ -58,7 +104,7 @@ const createTaskItem = (task) =>{
     newTaskDate.className = 'taskDate'
     newTask.appendChild(newTaskDate)
 
-    newTask.appendChild(getConcludeButton())
+    newTask.appendChild(getConcludeButton(newTaskId))
 
     list.appendChild(newTask)
 
@@ -75,7 +121,8 @@ const createTask = (event) =>{
          {id: newTaskData.id,
          description: newTaskData.description,
          tag: newTaskData.tag,
-         creationDate: newTaskData.creationDate}]
+         creationDate: newTaskData.creationDate,
+         done: false}]
 
     setTasksInStorage(updatedTasks);
     clearForm();
@@ -92,4 +139,4 @@ window.onload = function (){
 
 }
 
-//TODO Implementaçao do botao "Concluir"
+//TODO Contador de tarefas

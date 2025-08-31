@@ -99,3 +99,14 @@ input{
         background-color: #1e459ba9;
     }
 }
+
+#doneIcon{
+    margin: auto;
+    width: 32px;
+    height: 32px;
+}
+
+#DONE{
+    color: #8F98A8;
+    text-decoration: line-through;
+}
