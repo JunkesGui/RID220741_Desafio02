@@ -4,7 +4,14 @@ const getTasksInStorage = () =>{
 }
 
 const setTasksInStorage = (tasks) =>{
+    document.getElementById("taskProgress")
+            .textContent = `${doneTaskCount(tasks)} tarefa(s) concluída(s)`
     window.localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+const doneTaskCount = (tasks)=>{
+    const doneTasks = tasks.filter(({done}) => done);
+    return doneTasks.length;
 }
 
 const clearForm = () =>{
@@ -59,9 +66,9 @@ const visualConcludeTask = (id)=>{
     taskDiv.append(getDoneIcon())
 }
 
-const removeDoneTask = (taskId)=>{
+const removeDoneTask = ()=>{
     const tasks = getTasksInStorage();
-    const updatedTasks = tasks.filter(({id}) => parseInt(id) !== parseInt(taskId))
+    const updatedTasks = tasks.filter(({done}) => done === false);
     setTasksInStorage(updatedTasks)
 }
 
@@ -78,8 +85,6 @@ const concludeTask = (event) =>{
         }
     })
     setTasksInStorage(updatedTasks);
-    removeDoneTask(id)
-    
 }
 
 const createTaskItem = (task) =>{
@@ -129,6 +134,7 @@ const createTask = (event) =>{
 }
 
 window.onload = function (){
+    removeDoneTask();
     const form = document.getElementById("createTaskForm");
     form.addEventListener('submit', createTask);
 
@@ -136,7 +142,6 @@ window.onload = function (){
     tasks.forEach(task => {
         createTaskItem(task);
     });
-
 }
 
 //TODO Contador de tarefas

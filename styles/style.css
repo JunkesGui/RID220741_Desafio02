@@ -21,7 +21,7 @@
     justify-content: center;
     gap: 1rem;
     padding: 0px 5%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 input{
@@ -30,7 +30,7 @@ input{
     height: 2.8rem;
     border: 1px solid #EEEEEE;
     padding-left: 0.8rem;
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     outline: none;
     &:focus{
         border: 1px solid #383838;
@@ -44,7 +44,7 @@ input{
     color: #fff;
     outline: none;
     border: none;
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     &:active{
         background-color: #1e459ba9;
@@ -59,7 +59,7 @@ input{
 
     & > ul > div{
         border: 1px solid #EEEEEE;
-        border-radius: 0.4rem;
+        border-radius: 0.5rem;
         padding: 5%;
         display: flex;
         flex-direction: column;
@@ -72,7 +72,7 @@ input{
 .taskTag{
     border: 1px solid #B1BACB;
     border-radius: 1rem;
-    padding: 0.2rem;
+    padding: 0.3rem;
     width: fit-content;
     color: #B1BACB;
     font-size: 0.7rem;
@@ -89,7 +89,7 @@ input{
     background-color: #2D70FD;
     padding: 0;
     font-size: 1.1rem;
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     width: 50%;
     margin: auto;
     outline: none;
@@ -109,4 +109,17 @@ input{
 #DONE{
     color: #8F98A8;
     text-decoration: line-through;
+}
+
+hr{
+    border: 1px solid #EEEEEE;
+    width: 90%;
+    margin: 5% auto;
+}
+
+#taskProgress{
+    color: #B1BACB;
+    font-weight: 400;
+    margin: 0 5%;
+    text-align: right;
 }
