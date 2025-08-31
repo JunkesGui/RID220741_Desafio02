@@ -7,6 +7,11 @@ const setTasksInStorage = (tasks) =>{
     window.localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+const clearForm = () =>{
+    document.getElementById('description').value = "";
+    document.getElementById('tag').value = "";
+}
+
 const getTaskDate = () =>{
     const today = new Date();
     return `Criado em: ${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
@@ -73,6 +78,7 @@ const createTask = (event) =>{
          creationDate: newTaskData.creationDate}]
 
     setTasksInStorage(updatedTasks);
+    clearForm();
 }
 
 window.onload = function (){
@@ -84,7 +90,6 @@ window.onload = function (){
         createTaskItem(task);
     });
 
-    console.log(getTaskId());
 }
 
 //TODO Implementaçao do botao "Concluir"

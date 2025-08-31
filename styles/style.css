@@ -45,6 +45,7 @@ input{
     outline: none;
     border: none;
     border-radius: 0.4rem;
+    cursor: pointer;
     &:active{
         background-color: #1e459ba9;
     }
@@ -93,6 +94,7 @@ input{
     margin: auto;
     outline: none;
     border: none;
+    cursor: pointer;
     &:active{
         background-color: #1e459ba9;
     }
