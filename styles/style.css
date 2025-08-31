@@ -8,11 +8,24 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #F5F9FF;
+}
+
+main{
+    width: 90%;
+    padding: 5%;
+    border-radius: 1rem;
+    background-color: #fff;
+    margin: 5% auto;
+    box-shadow: 0 0 4px 0 #00000040;
+}
+
 #headerText{
     color: #11175E;
     font-size: 2rem;
     font-weight: 600;
-    margin: 10% 5%
+    margin: 1rem 0;
 }
 
 #createTaskForm{
@@ -20,8 +33,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    padding: 0px 5%;
-    margin-bottom: 5%;
+    margin-bottom: 2rem;
 }
 
 input{
@@ -52,8 +64,7 @@ input{
 }
 
 #taskListDiv{
-    width: 90%;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
 
@@ -113,13 +124,12 @@ input{
 
 hr{
     border: 1px solid #EEEEEE;
-    width: 90%;
-    margin: 5% auto;
+    margin: 2rem auto;
 }
 
 #taskProgress{
     color: #B1BACB;
     font-weight: 400;
-    margin: 0 5%;
+    margin: 0 2rem;
     text-align: right;
 }

@@ -143,5 +143,3 @@ window.onload = function (){
         createTaskItem(task);
     });
 }
-
-//TODO Contador de tarefas

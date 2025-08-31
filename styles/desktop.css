@@ -1,0 +1,26 @@
+@media screen and (min-width: 992px) {
+
+body{
+    background-color: #F5F9FF;
+}
+
+main{
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    width: 50%;
+    height: 70%;
+    margin: auto;
+}
+
+#createTaskForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#addTaskButton{
+    width: 2.8rem;
+    height: 2.8rem;
+}
+    
+}
