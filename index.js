@@ -12,12 +12,19 @@ const getTaskDate = () =>{
     return `Criado em: ${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
 }
 
+const getTaskId = () =>{
+    const tasks = getTasksInStorage();
+    const lastId = tasks[tasks.length - 1]?.id;
+    const newId = lastId? lastId + 1 : 1;
+    return newId;
+}
+
 const getTaskInfo = (event) =>{
     const description = event.target.elements.description.value;
-    //const id = task.id;
+    const id = getTaskId();
     const tag = event.target.elements.tag.value;
     const creationDate = getTaskDate();
-    return {description, tag, creationDate}
+    return {id, description, tag, creationDate}
 }
 
 const getConcludeButton = () =>{
@@ -60,7 +67,8 @@ const createTask = (event) =>{
 
     const tasks = getTasksInStorage();
     const updatedTasks = [...tasks,
-         {description: newTaskData.description,
+         {id: newTaskData.id,
+         description: newTaskData.description,
          tag: newTaskData.tag,
          creationDate: newTaskData.creationDate}]
 
@@ -75,6 +83,8 @@ window.onload = function (){
     tasks.forEach(task => {
         createTaskItem(task);
     });
+
+    console.log(getTaskId());
 }
 
-//TODO FUNC getId para criar novos IDs para cada nova task 
+//TODO Implementaçao do botao "Concluir"
