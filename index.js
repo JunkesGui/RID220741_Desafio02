@@ -7,12 +7,17 @@ const setTasksInStorage = (tasks) =>{
     window.localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+const getTaskDate = () =>{
+    const today = new Date();
+    return `Criado em: ${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
+}
+
 const getTaskInfo = (event) =>{
     const description = event.target.elements.description.value;
     //const id = task.id;
     const tag = event.target.elements.tag.value;
-    //const creationDate = task.creationDate;
-    return {description, tag}
+    const creationDate = getTaskDate();
+    return {description, tag, creationDate}
 }
 
 const getConcludeButton = () =>{
@@ -52,10 +57,13 @@ const createTask = (event) =>{
     event.preventDefault();
     const newTaskData = getTaskInfo(event);
     createTaskItem(newTaskData);
-    console.log(newTaskData)
 
     const tasks = getTasksInStorage();
-    const updatedTasks = [...tasks, {description: newTaskData.description, tag: newTaskData.tag}]
+    const updatedTasks = [...tasks,
+         {description: newTaskData.description,
+         tag: newTaskData.tag,
+         creationDate: newTaskData.creationDate}]
+
     setTasksInStorage(updatedTasks);
 }
 
@@ -69,4 +77,4 @@ window.onload = function (){
     });
 }
 
-//TODO FUNC getDate para adicionar a data de criação da task; FUNC getId para criar novos IDs para cada nova task 
+//TODO FUNC getId para criar novos IDs para cada nova task 
