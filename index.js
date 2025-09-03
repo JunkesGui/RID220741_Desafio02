@@ -90,24 +90,31 @@ const concludeTask = (event) =>{
 const createTaskItem = (task) =>{
     const list = document.getElementById('taskList');
     const newTask = document.createElement('div');
+    const newTaskWrapper = document.createElement('div');
+    const newTaskDetailsWrapper = document.createElement('div');
     const newTaskDesc = document.createElement('li');
     const newTaskTag = document.createElement('li');
     const newTaskDate = document.createElement('li');
 
     const newTaskId = task.id;
     newTask.id = `taskDivId${newTaskId}`;
+    newTaskWrapper.className = `taskWrapper`
 
     newTaskDesc.textContent = task.description
     newTaskDesc.id = `taskDescription${newTaskId}`
-    newTask.appendChild(newTaskDesc)
+    newTaskWrapper.appendChild(newTaskDesc)
+
+    newTask.appendChild(newTaskWrapper);
 
     newTaskTag.textContent = task.tag
     newTaskTag.className = 'taskTag'
-    newTask.appendChild(newTaskTag)
+    newTaskDetailsWrapper.appendChild(newTaskTag)
 
     newTaskDate.textContent = task.creationDate
     newTaskDate.className = 'taskDate'
-    newTask.appendChild(newTaskDate)
+    newTaskDetailsWrapper.appendChild(newTaskDate)
+
+    newTaskWrapper.appendChild(newTaskDetailsWrapper)
 
     newTask.appendChild(getConcludeButton(newTaskId))
 
