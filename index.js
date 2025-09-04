@@ -88,7 +88,7 @@ const concludeTask = (event) =>{
 }
 
 const createTaskItem = (task) =>{
-    const list = document.getElementById('taskList');
+    const list = document.getElementById('taskListDiv');
     const newTask = document.createElement('div');
     const newTaskWrapper = document.createElement('div');
     const newTaskDetailsWrapper = document.createElement('div');

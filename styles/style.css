@@ -90,7 +90,7 @@ input{
     display: flex;
     flex-direction: column;
 
-    & > ul > div{
+    & > div{
         border: 1px solid #EEEEEE;
         border-radius: 0.5rem;
         padding: 2rem;
