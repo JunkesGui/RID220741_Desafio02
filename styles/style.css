@@ -8,12 +8,7 @@
     box-sizing: border-box;
 }
 
-html{
-
-}
-
 body{
-
     background-color: #F5F9FF;
     display: flex;
     justify-content: center;
