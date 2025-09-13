@@ -66,7 +66,7 @@ const visualConcludeTask = (id)=>{
     document.getElementById(`taskDescription${id}`)
             .className = 'DONE'
     
-    const taskDiv = document.getElementById(`taskDivId${id}`)
+    const taskDiv = document.getElementById(`taskli${id}`)
     taskDiv.removeChild(document.getElementById(`concludeButton-${id}`))
     
     taskDiv.append(getDoneIcon())
@@ -94,16 +94,16 @@ const concludeTask = (event) =>{
 }
 
 const createTaskItem = (task) =>{
-    const list = document.getElementById('taskListDiv');
-    const newTask = document.createElement('div');
+    const list = document.getElementById('taskList');
+    const newTask = document.createElement('li');
     const newTaskWrapper = document.createElement('div');
     const newTaskDetailsWrapper = document.createElement('div');
-    const newTaskDesc = document.createElement('li');
-    const newTaskTag = document.createElement('li');
-    const newTaskDate = document.createElement('li');
+    const newTaskDesc = document.createElement('p');
+    const newTaskTag = document.createElement('p');
+    const newTaskDate = document.createElement('p');
 
     const newTaskId = task.id;
-    newTask.id = `taskDivId${newTaskId}`;
+    newTask.id = `taskli${newTaskId}`;
     newTaskWrapper.className = `taskWrapper`
 
     newTaskDesc.textContent = task.description
