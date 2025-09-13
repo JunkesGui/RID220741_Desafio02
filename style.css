@@ -142,7 +142,7 @@ input{
 }
 
 .DONE{
-    color: #8F98A8;
+    color: #8F98A8 !important;
     text-decoration: line-through;
 }
 
