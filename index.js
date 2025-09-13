@@ -1,6 +1,12 @@
+const firstTimeTasks = [
+    {id:1, description: "Implementar tela de listagem de tarefas", tag: "frontend", creationDate: "Criado em: 21/08/2024", done: false},
+    {id:2, description: "Criar endpoint para cadastro de tarefas", tag: "backend", creationDate: "Criado em: 21/08/2024", done: false},
+    {id:3, description: "Implementar protótipo da listagem de tarefas", tag: "backend", creationDate: "Criado em: 21/08/2024", done: true}
+]
+
 const getTasksInStorage = () =>{
     const localTasks = JSON.parse(window.localStorage.getItem('tasks'));
-    return localTasks ? localTasks : [];
+    return localTasks;
 }
 
 const setTasksInStorage = (tasks) =>{
@@ -140,13 +146,24 @@ const createTask = (event) =>{
     clearForm();
 }
 
-window.onload = function (){
-    removeDoneTask();
-    const form = document.getElementById("createTaskForm");
-    form.addEventListener('submit', createTask);
-
-    const tasks = getTasksInStorage();
+const loadTasks = (tasks) =>{
     tasks.forEach(task => {
         createTaskItem(task);
     });
+}
+
+window.onload = function (){
+    if(getTasksInStorage() == null){
+        const tasks = firstTimeTasks;
+        setTasksInStorage(tasks);
+        loadTasks(tasks);
+        visualConcludeTask(3);
+    }else{
+        removeDoneTask();
+        const tasks = getTasksInStorage();
+        loadTasks(tasks);
+    }
+
+    const form = document.getElementById("createTaskForm");
+    form.addEventListener('submit', createTask);
 }
