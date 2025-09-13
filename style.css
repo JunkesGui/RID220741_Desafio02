@@ -141,7 +141,7 @@ input{
     height: 32px;
 }
 
-#DONE{
+.DONE{
     color: #8F98A8;
     text-decoration: line-through;
 }

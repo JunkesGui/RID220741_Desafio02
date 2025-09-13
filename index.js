@@ -64,7 +64,7 @@ const getDoneIcon = () =>{
 
 const visualConcludeTask = (id)=>{
     document.getElementById(`taskDescription${id}`)
-            .setAttribute('id', 'DONE')
+            .className = 'DONE'
     
     const taskDiv = document.getElementById(`taskDivId${id}`)
     taskDiv.removeChild(document.getElementById(`concludeButton-${id}`))
